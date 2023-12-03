@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Large/Large Widgets</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=SF+Pro+Text%3A400%2C600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=SF+Pro+Rounded%3A600"/>
+  <link rel="stylesheet" href="./styles/large-large-widgets.css"/>
+</head>
+<body onload="startTime()" onclick="gradualReset()">
+
+<div class="large-large-widgets-8Ym">
+  <div class="statusbar-21s">
+    <p class="time-YXw" id="current-time">9:41</p>
+    <div class="cutout-Vbb">
+      <img class="lens-xVB" src="./assets/lens.png"/>
+    </div>
+    <div class="right-side-nDK">
+      <img class="icon-mobile-signal-4Aq" src="./assets/icon-mobile-signal.png"/>
+      <img class="wifi-Mvd" src="./assets/wifi.png"/>
+      <img class="batteryindicator-fwK" src="./assets/batteryindicator.png"/>
+    </div>
+  </div>
+  <div class="clock-widgets-wP3">
+    <div class="auto-group-9dsy-zcD">
+      <div class="wednesday-7-september-ewf" id="day">Wednesday 7 September</div>
+      <div class="item-12-57-5n5" id="clock">12:57</div>
+    </div>
+    <div class="frame-21-i4M">
+      <div class="widget-Dmo">
+        <div class="frame-33-iyT">
+          <div class="headline-1Sm">
+            <div class="device-MoT">
+              <img src="./assets/icons8-headphones-48.png" weigth="20px" height="20px" alt="">
+            </div>
+            <div class="item-50--eXf">50 %</div>
+          </div>
+          <div class="text-jZ7">WH-1000XM5</div>
+        </div>
+        <div class="group-6-cN1">
+          <div class="rectangle-7-AeR">
+          </div>
+        </div>
+      </div>
+      <div class="frame-37-QHs">
+        <div class="item-1-KQq">
+          <div class="ellipse-28-rvZ">
+          </div>
+          <div class="subheadline-7rV">Prepare for Review</div>
+        </div>
+        <div class="auto-group-tkbd-qGh">
+          <div class="item-2-aVB">
+            <div class="ellipse-28-KSm">
+            </div>
+            <div class="subheadline-Epd">Finish my design</div>
+          </div>
+          <div class="item-3-ynD">
+            <div class="ellipse-28-LMs">
+            </div>
+            <div class="subheadline-3n5">Prepare concept</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="notification-mi5">
+    <div class="icon-sFK">
+      <img src=".\assets\instagram.png" width="40px" height="40px" alt="Instagram Icon"/>
+    </div>
+    <div class="content-mrV">
+      <div class="headline-8S9">
+        <p class="headline-G2Z">Instagram</p>
+        <p class="m-ago-yxZ">15m ago</p>
+      </div>
+      <p class="subheadline-7Yy">Ram, suresh_123, Ramesh_342, Itz_ram <br>liked your photo</p>
+    </div>
+  </div>
+  <div class="bottom-actions-Dc1">
+    <div class="buttons-AGM">
+      <div class="light-h1P">
+        <img src=".\assets\icons8-flashlight-30.png" alt="icon"/>
+      </div>
+      <div class="focus-mode-Y21">
+        <div class="icon-Gih">
+          <img src="./assets/icons8-user-24.png" alt="profile icon">
+        </div>
+        <div class="text-Q4D">Personal</div>
+      </div>
+      <div class="camera-JvH">
+        <img src=".\assets\icons8-camera-30.png" alt="icon">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  div.cutout-Vbb {
+    opacity: 0.1;
+  }
+</style>
+
+<script>
+let originalTime = new Date(); // Store the original time
+let offsetMinutes = 7; // Set the offset time in minutes
+
+function startTime() {
+  const today = new Date();
+  today.setMinutes(today.getMinutes() + offsetMinutes);
+  let h = today.getHours();
+  let m = today.getMinutes();
+  m = checkTime(m);
+
+  // Update the specific elements with the updated time
+  document.getElementById('clock').innerHTML =  h + ":" + m;
+  document.getElementById('day').innerHTML = getDayString(today.getDay()) + ' ' + (today.getMonth() + 1) + ' ' + today.getFullYear();
+  
+  // Update the time element
+  document.getElementById('current-time').innerHTML = h + ":" + m;
+
+  setTimeout(startTime, 1000);
+}
+
+function gradualReset() {
+  if (offsetMinutes > 0) {
+    offsetMinutes -= 1; // Adjust the decrement value based on how quickly you want to return to the original time
+    startTime(); // Call startTime to update the clock
+    setTimeout(gradualReset, 1000);
+  } else {
+    offsetMinutes = 0;
+  }
+}
+
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};
+  return i;
+}
+
+function getDayString(dayIndex) {
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  return days[dayIndex];
+}
+</script>
+
+</body>
+</html>
